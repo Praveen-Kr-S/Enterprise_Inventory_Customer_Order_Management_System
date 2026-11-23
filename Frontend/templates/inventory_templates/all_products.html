@@ -10,6 +10,42 @@
 
 <body>
     <h1>All Products List Page</h1>
+
+    <div>
+        <button><a href="{% url 'addproduct' %}">Add Products</a></button>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <th>Product Name</th>
+                <th>Product Code</th>
+                <th>Price</th>
+                <th>GST</th>
+                <th>Image</th>
+                <th>Food Item</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            {% for product in products %}
+            <tr>
+                <td>{{product.product_name}}</td>
+                <td>{{product.product_code}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.gst}}</td>
+                {% if product.picture %}
+                <td><img src="{{ product.picture.url }}" alt="img" width="150" height="150"></td>
+                {% else %}
+                <td>No Images</td>
+                {% endif %}
+                <td>{{product.food_product}}</td>
+                <td><a href="{% url 'updateproduct' product.id %}">Update</a></td>
+                <td><a href="{% url 'deleteproduct' product.id %}">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 
 </html>

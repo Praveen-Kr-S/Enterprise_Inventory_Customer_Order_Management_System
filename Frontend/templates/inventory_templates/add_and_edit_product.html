@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    {% if product_form %}
+
+    <h1>Inventory Add Product Form</h1>
+
+    <div>
+        <button><a href="{% url 'allproducts' %}">Back</a></button>
+    </div>
+
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ product_form }}
+            <button type="submit">Add Products</button>
+        </form>
+    </div>
+
+    {% else %}
+
+    <h1>Inventory Edit Product Form</h1>
+
+    <div>
+        <button><a href="{% url 'allproducts' %}">Back</a></button>
+    </div>
+
+    <div>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ edit_product_form }}
+            <button type="submit">Edit Products</button>
+        </form>
+    </div>
+
+    {% endif %}
+</body>
+
+
+
+</html>
