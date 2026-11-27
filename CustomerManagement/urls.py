@@ -6,5 +6,5 @@ urlpatterns = [
     path('addcustomer/',Add_Customer,name="addcustomer"),
     path('update/<int:id>/',Update_Customer,name="updatecustomer"),
     path('delete/<int:id>/',Delete_Customer,name="deletecustomer")
-    
+
 ]

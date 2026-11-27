@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    {% if order_form %}
+    <h1>Enterprise Add Order Form</h1>
+
+    <div>
+        <button><a href="{% url 'allorders' %}">Back</a></button>
+    </div>
+
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ order_form }}
+            <button type="submit">Add Order</button>
+        </form>
+    </div>
+
+    {% else %}
+
+
+    <h1>Enterprise Edit Order Form</h1>
+
+    <div>
+        <button><a href="{% url 'allorders' %}">Back</a></button>
+    </div>
+
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ edit_order_form }}
+            <button type="submit">Edit Order</button>
+        </form>
+    </div>
+
+
+    {% endif %}
+
+</body>
+
+</html>

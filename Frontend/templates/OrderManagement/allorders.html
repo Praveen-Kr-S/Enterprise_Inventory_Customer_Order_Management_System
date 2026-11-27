@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <h1>All Orders List Page</h1>
+
+    <div>
+        <button><a href="{% url 'addorder' %}">Add Products</a></button>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <th>Customer Name</th>
+                <th>Product Name</th>
+                <th>Order Number</th>
+                <th>Order Date</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>GST Amount</th>
+                <th>Bill Amount</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+
+            {% for order in orders %}
+            <tr>
+                <td>{{order.customer_reference}}</td>
+                <td>{{order.product_reference}}</td>
+                <td>{{order.order_number}}</td>
+                <td>{{order.order_date}}</td>
+                <td>{{order.quantity}}</td>
+                <td>{{order.amount}}</td>
+                <td>{{order.gst}}</td>
+                <td>{{order.bill_amount}}</td>
+                <td><a href="{% url 'updateorder' order.id %}">Update</a></td>
+                <td><a href="{% url 'deleteorder' order.id %}">Remove</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>
